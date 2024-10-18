@@ -24,3 +24,5 @@ You should then see output like the following:
     h264: 30 calls in past 1.0032188 seconds; 29.903748 calls/sec
 
 All in this takes up about 70MB of ram and a load average of 0.5 on a raspberry pi zero 2w, running bullseye aarch64! 
+
+You can view the output.h264 file in VLC.  The PPM should be viewable in any image viewer.
