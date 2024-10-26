@@ -4,6 +4,7 @@ use ffmpeg_sys_next as ff;
 
 use std::fs::File;
 use std::io::Write;
+use std::{time,thread};
 
 mod timereporter;
 use timereporter::RateReporter;
@@ -88,5 +89,10 @@ fn main() {
     let mycb = Box::new(MyCallback::new(lowres));
     libcam.setCallbacks(mycb);
     println!("Running...\n");
-    libcam.start(false);
+    libcam.start(true);
+
+    loop {
+        thread::sleep(time::Duration::from_millis(1000));
+        println!("wait...");
+    }
 }
