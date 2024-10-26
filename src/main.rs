@@ -1,4 +1,6 @@
 use rslibcamlitelib::{LibCamClient, StreamParams, StreamFormat, ExternalCallback};
+use rslibcamlitelib::{analyze, begin_analysis, AVStream};
+use ffmpeg_sys_next as ff;
 
 use std::fs::File;
 use std::io::Write;
@@ -13,7 +15,7 @@ struct MyCallback {
     h264Reporter: RateReporter,
     lowReporter: RateReporter,
     info: *mut std::ffi::c_void,
-    stream: *mut sys::AVStream,
+    stream: *mut AVStream,
 }
 
 #[allow(non_snake_case, deprecated)]
@@ -30,13 +32,6 @@ impl MyCallback {
 }
 
 
-use ffmpeg_sys_next as sys;
-
-extern "C" {
-    fn analyze(obj: *mut std::ffi::c_void, mem: *mut u8, count: usize) -> *mut sys::AVStream;
-    fn begin_analysis() -> *mut std::ffi::c_void;
-}
-
 use ffmpeg_next as ffmpeg;
 
 #[allow(non_snake_case, deprecated)]
@@ -49,7 +44,7 @@ impl ExternalCallback for MyCallback {
                 let mut parcopy = ffmpeg::codec::Parameters::new();
                 let parcopy_ptr = parcopy.as_mut_ptr();
                 let rat = ffmpeg::util::rational::Rational::new( (*self.stream).time_base.num, (*self.stream).time_base.den);
-                sys::avcodec_parameters_copy(parcopy_ptr, cpar);
+                ff::avcodec_parameters_copy(parcopy_ptr, cpar);
                 println!("Got av stream! {}x{} rat {}", (*parcopy_ptr).width, (*parcopy_ptr).height, rat);
             }
         }
