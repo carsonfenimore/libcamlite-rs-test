@@ -1,7 +1,8 @@
 # libcamlite-rs-test
-Test out basic functionality of libcamlite-rs
+Demo app for exercising libcamlite-rs.
 
-This shows that in a few lines, one can begin writing rust apps that make use of both the h264 and rgb streams.  Its about as simple as:
+## Using this library
+You can get parallel RGB/h264 streams in just a few lines:
 
     let libcam = LibCamClient::new();
 
@@ -15,6 +16,20 @@ This shows that in a few lines, one can begin writing rust apps that make use of
     libcam.setCallbacks(mycb);
     libcam.run();
 
+## Building
+To build this app ensure you have libcamlite built:
+
+  git clone https://github.com/carsonfenimore/libcamlite
+  # follow instructions to build libcamlite
+  
+
+Then build this app:
+
+  git clone https://github.com/carsonfenimore/libcamlite-rs-test
+  cd libcamlite-rs-test
+  LD_LIBRARY_PATH=../libcamlite/build cargo run
+
+
 You should then see output like the following:
 
     low: 31 calls in past 1.0325267 seconds; 30.023436 calls/sec
@@ -23,6 +38,4 @@ You should then see output like the following:
     low: 31 calls in past 1.0325396 seconds; 30.023062 calls/sec
     h264: 30 calls in past 1.0032188 seconds; 29.903748 calls/sec
 
-All in this takes up about 70MB of ram and a load average of 0.5 on a raspberry pi zero 2w, running bullseye aarch64! 
-
-You can view the output.h264 file in VLC.  The PPM should be viewable in any image viewer.
+All in about 70MB of RAM and a load average of 0.5 on a raspberry pi zero 2w, running bullseye aarch64! View the output.h264 file in VLC.  View the PPM using any image viewer.
