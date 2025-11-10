@@ -19,8 +19,8 @@ You can get parallel RGB/h264 streams in just a few lines:
 ## Building
 To build this app ensure you have libcamlite built:
 
-  git clone https://github.com/carsonfenimore/libcamlite
-  # follow instructions to build libcamlite
+    git clone https://github.com/carsonfenimore/libcamlite
+    # follow instructions to build libcamlite
   
 
 Then build this app:
