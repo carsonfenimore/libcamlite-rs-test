@@ -25,9 +25,9 @@ To build this app ensure you have libcamlite built:
 
 Then build this app:
 
-   git clone https://github.com/carsonfenimore/libcamlite-rs-test
-   cd libcamlite-rs-test
-   LD_LIBRARY_PATH=../libcamlite/build cargo run
+    git clone https://github.com/carsonfenimore/libcamlite-rs-test
+    cd libcamlite-rs-test
+    LD_LIBRARY_PATH=../libcamlite/build cargo run
 
 
 You should then see output like the following:
