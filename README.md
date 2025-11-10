@@ -31,6 +31,8 @@ Then build this app:
 
 NOTE: in this example BOTH libcamlite-rs-test AND libcamlite are within the same parent directory.  When you go to run libcamlite-rs-test, you will need to provide the LD_LIBRARY_PATH: 
 
+## Running
+ 
     LD_LIBRARY_PATH=../libcamlite/build/ ./target/debug/libcamlite-rs-test
 
 You should then see output like the following:
